@@ -109,6 +109,11 @@ public class ManageProductsFrame extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton3.setText("Delete");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton2.setText("Update");
@@ -252,6 +257,33 @@ public class ManageProductsFrame extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+                if(jTextField1.getText().isEmpty() && jTextField2.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please select a product", "Warning", 2);
+        }else{
+            
+            try {
+            Product product = new Product();
+            product.setId(Integer.parseInt(model.getValueAt(rowIndex, 0).toString()));
+            product.setName(jTextField1.getText().trim());
+            product.setPrice(Double.parseDouble(jTextField2.getText().trim()));
+            if(dao.delete(product)){
+                JOptionPane.showMessageDialog(this, "Product Deleted");
+                jTable1.setModel(new DefaultTableModel(null, new Object[]{"ID","Name","Price","Image"}));
+                dao.getallProducts(jTable1);
+                jTable1.getTableHeader().setReorderingAllowed(false);
+                jTable1.getColumnModel().getColumn(3).setCellRenderer(new ManageProductsFrame.ImageRenderer());
+                clear();
+            }
+            }catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, ""+e, "Warning", 2);
+            }   
+            
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void clear() {
         jTextField1.setText(null);

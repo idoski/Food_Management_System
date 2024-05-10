@@ -79,7 +79,16 @@ public class Dao {
         }
         
     }
-
+    
+    public boolean delete(Product product)  {
+        try {
+            ps = con.prepareStatement("delete from product where id = ?");
+            ps.setInt(1, product.getId());
+            return ps.executeUpdate() > 0;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
     
       public int getMaxRowAOrderTable(){
         int row = 0;
@@ -206,4 +215,31 @@ public class Dao {
         }
         
     }
+        
+       public boolean insertPayment(Payment payment) {
+        String sql = "insert into payment (pid, cName, proid, pNsme, total, pdate) valuse(?,?,?,?,?,?)";
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, payment.getPid());
+            ps.setString(2, payment.getcName());
+            ps.setString(3, payment.getProId());
+            ps.setString(4, payment.getProName());
+            ps.setDouble(5, payment.getTotal());
+            ps.setString(6, payment.getDate());
+            return ps.executeUpdate() > 0;
+
+        } catch (Exception ex) {
+            return false;
+        }
+
+    }
+        public boolean deleteCart(int cid) {
+            try {
+                ps = con.prepareStatment("delete from cart where cid = ?");
+                ps.setInt(1, cid.getId());
+                return.ps.executeUpdate() > 0;
+            } catch (Exception ex) {
+                return false;
+            }
+        }
 }

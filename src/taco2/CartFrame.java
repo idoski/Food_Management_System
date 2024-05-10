@@ -351,6 +351,14 @@ public class CartFrame extends javax.swing.JFrame {
         payment.setProName(proName);
         payment.setTotal(t);
         payment.setDate(jTextField2.getText().trim());
+        if(check()){
+            if(dao.insertPayment(payment)){
+                JOptionPane.showMessageDialog(this, "Payment Success!!");
+                int cid = Integer.parseInt(model.getValueAt(rowIndex, 0).toString());
+                
+                
+            }
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -365,7 +373,8 @@ public class CartFrame extends javax.swing.JFrame {
         }
         double change = Double.parseDouble(jTextField8.getText().trim());
         if(change < 0.0){
-            
+            JOptionPane.showMessageDialog(this, "Not enough cash entered", "Warning", 2);
+            return false;
         }
     }
     /**
