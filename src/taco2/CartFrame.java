@@ -5,11 +5,14 @@
 package taco2;
 
 import java.awt.Color;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Calculate;
 import model.Dao;
@@ -355,8 +358,24 @@ public class CartFrame extends javax.swing.JFrame {
             if(dao.insertPayment(payment)){
                 JOptionPane.showMessageDialog(this, "Payment Success!!");
                 int cid = Integer.parseInt(model.getValueAt(rowIndex, 0).toString());
+                dao.deleteCart(cid);
                 
+                int x = JOptionPane.showConfirmDialog(this, "Do you want to print the receipt?", "Print", JOptionPane.YES_NO_OPTION, 0);
+                if( x == JOptionPane.YES_OPTION){
+                    try {
+                        MessageFormat header = new MessageFormat("***Food Management System***"+ "Customer Name:"+ cName+ " "+ "$Total($): "+ t);
+                        MessageFormat footer = new MessageFormat("Page(0, number,integer)");
+                        jTable1.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+                        setVisible(false);
+                    } catch (PrinterException ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
+                }else{
+                    setVisible(false);
+                }
                 
+            }else{
+                JOptionPane.showMessageDialog(this, "Payement Failed..", "Warning", 2);
             }
         }
         
