@@ -189,6 +189,11 @@ public class CartFrame extends javax.swing.JFrame {
 
         jTextField8.setBackground(new java.awt.Color(204, 204, 204));
         jTextField8.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField8KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -381,6 +386,21 @@ public class CartFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        // TODO add your handling code here:
+        cash();
+    }//GEN-LAST:event_jTextField8KeyPressed
+
+    public void cash(){
+        try{
+            double cash = Double.parseDouble(jTextField7.getText().trim());
+            double total = Double.parseDouble(jTextField5.getText().trim());
+            double change = (cash - total);
+            jTextField8.setText(String.valueOf(change));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Not enough cash entered", "Warning", 2);
+        }
+    }
     
     public boolean check(){
         if(jTextField6.getText().isEmpty()){
@@ -395,6 +415,7 @@ public class CartFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Not enough cash entered", "Warning", 2);
             return false;
         }
+        return true;
     }
     /**
      * @param args the command line arguments

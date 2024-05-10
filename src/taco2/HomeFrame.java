@@ -50,7 +50,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 220, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 220, 60));
 
         jButton2.setBackground(new java.awt.Color(237, 226, 219));
         jButton2.setText("All Products");
@@ -58,15 +58,15 @@ public class HomeFrame extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(237, 226, 219));
         jButton3.setText("Order");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 220, 60));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 220, 60));
 
         jButton4.setBackground(new java.awt.Color(237, 226, 219));
         jButton4.setText("View Orders");
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 420, 220, 60));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 220, 60));
 
         jButton5.setBackground(new java.awt.Color(237, 226, 219));
         jButton5.setText("Statistics");
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, 220, 60));
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 220, 60));
 
         jButton6.setBackground(new java.awt.Color(237, 226, 219));
         jButton6.setText("Add Products");
@@ -75,7 +75,7 @@ public class HomeFrame extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 220, 60));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 220, 60));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Food Management System");
