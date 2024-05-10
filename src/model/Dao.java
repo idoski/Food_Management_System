@@ -235,9 +235,9 @@ public class Dao {
     }
         public boolean deleteCart(int cid) {
             try {
-                ps = con.prepareStatment("delete from cart where cid = ?");
-                ps.setInt(1, cid.getId());
-                return.ps.executeUpdate() > 0;
+                ps = con.prepareStatement("delete from cart where cid = ?");
+                ps.setInt(1, cid);
+                return ps.executeUpdate() > 0;
             } catch (Exception ex) {
                 return false;
             }
