@@ -183,6 +183,11 @@ public class CartFrame extends javax.swing.JFrame {
         jLabel9.setText("Cash ($):");
 
         jTextField7.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField7KeyReleased(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setText("Change ($):");
@@ -192,6 +197,9 @@ public class CartFrame extends javax.swing.JFrame {
         jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField8KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField8KeyReleased(evt);
             }
         });
 
@@ -388,8 +396,17 @@ public class CartFrame extends javax.swing.JFrame {
 
     private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
         // TODO add your handling code here:
-        cash();
     }//GEN-LAST:event_jTextField8KeyPressed
+
+    private void jTextField8KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyReleased
+        // TODO add your handling code here:
+        cash();
+    }//GEN-LAST:event_jTextField8KeyReleased
+
+    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
+        // TODO add your handling code here:
+        cash();
+    }//GEN-LAST:event_jTextField7KeyReleased
 
     public void cash(){
         try{
