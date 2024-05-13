@@ -339,7 +339,7 @@ public class CartFrame extends javax.swing.JFrame {
             try {
                 Thread.sleep(40);
             } catch (InterruptedException ex) {
-                Logger.getLogger(OrderFrame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CartFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

@@ -159,7 +159,7 @@ public class Dao {
         int row = 0;
         try {
             st = con.createStatement();
-            rs = st.executeQuery("select max(pid) from cart");
+            rs = st.executeQuery("select max(cid) from cart");
             while (rs.next()) {
                 row = rs.getInt(1);
             }
