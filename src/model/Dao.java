@@ -207,7 +207,7 @@ public class Dao {
                 row[2] = rs.getString(3);
                 row[3] = rs.getInt(4);
                 row[4] = rs.getDouble(5);
-                row[5] = rs.getBytes(6);
+                row[5] = rs.getDouble(6);
                 model.addRow(row);
             }
         } catch (Exception ex) {

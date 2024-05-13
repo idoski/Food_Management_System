@@ -55,7 +55,7 @@ public class CartFrame extends javax.swing.JFrame {
     private void tableProduct() {
         dao.getProductsFromCart(jTable1);
         model = (DefaultTableModel) jTable1.getModel();
-        jTable1.setRowHeight(100);
+        jTable1.setRowHeight(40);
         jTable1.setShowGrid(true);
         jTable1.setGridColor(Color.black);
         jTable1.setBackground(Color.white);
@@ -124,10 +124,10 @@ public class CartFrame extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Cart ID", "Product ID", "Product Name", "Quantity", "Price"
+                "Cart ID", "Product ID", "Product Name", "Quantity", "Price", "total"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
