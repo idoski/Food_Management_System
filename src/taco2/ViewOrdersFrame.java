@@ -22,6 +22,8 @@ public class ViewOrdersFrame extends javax.swing.JFrame {
     int xx, xy;
     Dao dao = new Dao();
     DefaultTableModel model;
+    
+    
     public ViewOrdersFrame() {
         initComponents();
         tableProduct();
@@ -30,7 +32,7 @@ public class ViewOrdersFrame extends javax.swing.JFrame {
     
     
      private void tableProduct() {
-       /// dao.getallProducts(jTable1);
+        dao.getPaymentDetails(jTable1);
         model = (DefaultTableModel) jTable1.getModel();
         jTable1.setRowHeight(40);
         jTable1.setShowGrid(true);
@@ -63,6 +65,16 @@ public class ViewOrdersFrame extends javax.swing.JFrame {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 0));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 35)); // NOI18N
         jLabel4.setText("X");
@@ -138,6 +150,19 @@ public class ViewOrdersFrame extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_jPanel1MouseDragged
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
 
     /**
      * @param args the command line arguments

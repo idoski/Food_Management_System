@@ -242,4 +242,78 @@ public class Dao {
                 return false;
             }
         }
+            public void getPaymentDetails(JTable table) {
+            String sql = "select * from payment order by pid desc";
+
+            try {
+                ps = con.prepareStatement(sql);
+                rs = ps.executeQuery();
+
+            DefaultTableModel model = (DefaultTableModel) table.getModel();
+
+            Object[] row;
+            while (rs.next()) {
+                row = new Object[6];
+                row[0] = rs.getInt(1);
+                row[1] = rs.getString(2);
+                row[2] = rs.getString(3);
+                row[3] = rs.getString(4);
+                row[4] = rs.getDouble(5);
+                row[5] = rs.getString(6);
+                model.addRow(row);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+            
+    public int totalProducts() {
+        int total = 0;
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("select count(*) as 'total' from product");
+            if(rs.next()){
+                total = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+
+    }
+    
+    
+     public double todayRevenue(String date) {
+        double total = 0.0;
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("select sum(total) as 'total' from payment where pdate -'"+date+"'");
+            if(rs.next()){
+                total = rs.getDouble(1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+
+    }
+    
+      public double totalRevenue(String date) {
+        double total = 0.0;
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery("select sum(total) as 'total' from payment");
+            if(rs.next()){
+                total = rs.getDouble(1);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return total;
+
+    }
 }

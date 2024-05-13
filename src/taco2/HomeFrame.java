@@ -4,6 +4,10 @@
  */
 package taco2;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Eduardo Navarrete
@@ -15,6 +19,7 @@ public class HomeFrame extends javax.swing.JFrame {
      */
     public HomeFrame() {
         initComponents();
+        setDateTime();
     }
 
     /**
@@ -168,6 +173,27 @@ public class HomeFrame extends javax.swing.JFrame {
         new StatistcsFrame().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void setDateTime(){
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, ex.getMessage());
+                    }
+                    Date date = new Date();
+                    SimpleDateFormat tf = new SimpleDateFormat("h:mm:ss aa");
+                    SimpleDateFormat df = new SimpleDateFormat("EEEE, yyyy-MM-dd");
+                    String time = tf.format(date);
+                    jLabel3.setText(time.split(" ")[0]);
+                    jLabel4.setText(time.split(" ") [1]);
+                    jLabel5.setText(df.format(date));
+                }
+            }
+        }).start();
+    }
     /**
      * @param args the command line arguments
      */
